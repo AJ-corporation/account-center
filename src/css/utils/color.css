@@ -1,0 +1,13 @@
+@media (prefers-color-scheme: dark) {
+  :root {
+    /* theme */
+    --theme-color: #000;
+    --theme-color-not: #fff;
+
+    /* bg */
+    --bg-dark-color: #333;
+
+    /* txt */
+    --txt-df-color: #ddd;
+  }
+}
