@@ -1,0 +1,10 @@
+.pd {
+  padding: var(--pd);
+}
+
+:root {
+  --pd: 12px;
+  --pd-small: 6px;
+  --pd-small-very: 3px;
+  --pd-big: 18px;
+}
