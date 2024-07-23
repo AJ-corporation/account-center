@@ -34,6 +34,10 @@
   font-size: 1.5em;
 }
 
+.signup_login_clr_btn {
+  background-color: var(--main-bg-color);
+}
+
 :root {
   --signup-login-logo: 200px;
   --signup-login-con-width: 700px;

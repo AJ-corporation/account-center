@@ -6,6 +6,7 @@ import SignupPagePassword from './components/SignupPagePassword'
 import Button from '../../../components/Button/Button'
 
 import { SignupPageContext } from './SignupPageContext'
+import { goToHref } from '../../../js/utils/href'
 
 import logo from '../../../imgs/logo/logo.jpg'
 
@@ -67,7 +68,7 @@ export default function SignupPage() {
           <div className="signup_login_con con_bg_df list_y">
             <div className="d_f_jc_sb d_f_ai_ce">
               <h1 className="title">Create account</h1>
-              <Button>Login</Button>
+              <Button onClick={() => goToHref('/accounts/login')}>Login</Button>
             </div>
             <hr />
             <div className="list_x d_f_jc_sb">
