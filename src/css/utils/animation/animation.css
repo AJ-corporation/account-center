@@ -1,0 +1,17 @@
+@keyframes scaleTo1 {
+  to {
+    scale: 1;
+  }
+}
+
+@keyframes widthTo100 {
+  to {
+    width: 100%;
+  }
+}
+
+@keyframes opaTo1 {
+  to {
+    opacity: 1;
+  }
+}

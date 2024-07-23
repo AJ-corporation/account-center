@@ -4,10 +4,18 @@
     --theme-color: #000;
     --theme-color-not: #fff;
 
+    /* main */
+    --main-bg-color: #111975;
+
     /* bg */
     --bg-dark-color: #333;
 
     /* txt */
     --txt-df-color: #ddd;
+  }
+
+  /* Button */
+  :root {
+    --btn-bg-color: #444;
   }
 }
