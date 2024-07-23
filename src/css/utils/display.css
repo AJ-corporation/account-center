@@ -14,6 +14,11 @@
   justify-content: flex-end;
 }
 
+.d_f_ai_ce {
+  display: flex;
+  align-items: center;
+}
+
 .d_n {
   display: none;
 }

@@ -1,0 +1,4 @@
+hr {
+  border: 2px solid var(--hr-default-color);
+  border-radius: 10em;
+}
