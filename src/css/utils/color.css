@@ -29,5 +29,6 @@
     --input-bg-color: #444;
     --input-bg-hover-color: #666;
     --input-bg-focus-color: #333;
+    --input-bg-focus-border-color: #7c84d7;
   }
 }
