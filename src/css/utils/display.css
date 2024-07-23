@@ -13,3 +13,7 @@
   display: flex;
   justify-content: flex-end;
 }
+
+.d_n {
+  display: none;
+}
