@@ -21,7 +21,8 @@
 }
 
 html,
-body {
+body,
+#root {
   background-color: var(--bg-dark-color);
   height: 100%;
   font-size: var(--font-size);
