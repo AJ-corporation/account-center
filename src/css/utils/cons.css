@@ -1,0 +1,9 @@
+@import url('./color.css');
+@import url('./padding.css');
+@import url('./border.css');
+
+.con_bg_df {
+  background-color: var(--bg-default-color);
+  padding: var(--pd);
+  border-radius: var(--bd-ra);
+}

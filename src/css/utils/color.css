@@ -9,13 +9,25 @@
 
     /* bg */
     --bg-dark-color: #333;
+    --bg-default-color: #555;
+
+    /* border */
+    --bd-default-color: #ccc;
 
     /* txt */
     --txt-df-color: #ddd;
+    --txt-red-color: #cc3d3d;
   }
 
   /* Button */
   :root {
     --btn-bg-color: #444;
+  }
+
+  /* Input */
+  :root {
+    --input-bg-color: #444;
+    --input-bg-hover-color: #666;
+    --input-bg-focus-color: #333;
   }
 }
