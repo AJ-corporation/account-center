@@ -7,6 +7,7 @@ import Button from '../../../components/Button/Button'
 
 import { SignupPageContext } from './SignupPageContext'
 import { goToHref } from '../../../js/utils/href'
+import { getLocation } from '../../../js/utils/location'
 
 import logo from '../../../imgs/logo/logo.jpg'
 
@@ -57,8 +58,17 @@ export default function SignupPage() {
     setCurrentPage(currentPage - 1)
   }
 
-  function create() {
-    console.log(formData)
+  async function create() {
+    const location = await getLocation()
+    delete formData.confirmPassword
+
+    const userData = {
+      user: formData,
+      joinded: new Date().getTime(),
+      location,
+    }
+
+    console.log(userData)
   }
 
   return (
