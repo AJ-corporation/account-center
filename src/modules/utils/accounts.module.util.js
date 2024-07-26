@@ -5,7 +5,7 @@ import {
 
 export async function isUsernameAvailable(username) {
   const usersData = await loadFromFirestoreWhere('accounts', [
-    'username',
+    'user.username',
     '==',
     username,
   ])
