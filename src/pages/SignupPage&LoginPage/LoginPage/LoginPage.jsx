@@ -14,14 +14,15 @@ export default function LoginPage() {
     username: '',
     password: '',
   })
-  const [disabled, setDisabled] = useState(true)
+  const [disabled, setDisabled] = useState({ btn: true, form: false })
 
   useEffect(() => {
-    setDisabled(!formData.username || !formData.password)
+    setDisabled({ ...disabled, btn: !formData.username || !formData.password })
   }, [formData.username, formData.password])
 
   function login(e) {
     e.preventDefault()
+    setDisabled({ ...disabled, form: true })
     console.log(formData)
   }
 
@@ -31,13 +32,19 @@ export default function LoginPage() {
         <div className="signup_login_con con_bg_df list_y">
           <div className="d_f_jc_sb d_f_ai_ce">
             <h1 className="title">Login account</h1>
-            <Button onClick={() => goToHref('/accounts/signup')}>Sign up</Button>
+            <Button onClick={() => goToHref('/accounts/signup')}>
+              Sign up
+            </Button>
           </div>
           <hr />
           <div className="list_x d_f_jc_sb">
             <img className="signup_login_logo" src={logo} alt="Logo" />
             <div className="input_area list_y d_f_jc_sb">
-              <form className="input_area list_y d_f_jc_sb" onSubmit={login}>
+              <form
+                className="input_area list_y d_f_jc_sb"
+                onSubmit={login}
+                disabled={disabled.form}
+              >
                 <Input
                   title="Username"
                   inputProps={{
@@ -47,13 +54,17 @@ export default function LoginPage() {
                   }}
                 />
                 <Input
-                  title="Last name"
+                  title="Password"
+                  type="password"
                   inputProps={{
                     onChange: (e) =>
                       setFormData({ ...formData, password: e.target.value }),
                   }}
                 />
-                <Button className="signup_login_clr_btn" disabled={disabled}>
+                <Button
+                  className="signup_login_clr_btn"
+                  disabled={disabled.btn}
+                >
                   Login
                 </Button>
               </form>
