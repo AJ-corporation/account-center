@@ -36,7 +36,6 @@ export default function SignupPage() {
 
   useEffect(() => {
     if (currentPage === 0) setDisabled({ ...disabled, btn: !formData.fname })
-    if (currentPage === 1) setDisabled({ ...disabled, btn: !formData.username })
     if (currentPage === 2)
       setDisabled({
         ...disabled,
@@ -93,7 +92,9 @@ export default function SignupPage() {
         theme={toastData.theme}
         draggable
       />
-      <SignupPageContext.Provider value={{ formData, setFormData, nextPage }}>
+      <SignupPageContext.Provider
+        value={{ formData, setFormData, disabled, setDisabled, nextPage }}
+      >
         <div className="full_page d_f_ce">
           <div className="signup_login_con con_bg_df list_y">
             <div className="d_f_jc_sb d_f_ai_ce">
