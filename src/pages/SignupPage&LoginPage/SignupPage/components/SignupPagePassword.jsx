@@ -3,7 +3,7 @@ import { useContext, useEffect, useState } from 'react'
 import Input from '../../../../components/Input/Input'
 
 import { SignupPageContext } from '../SignupPageContext'
-import { isValidPassword } from '../../../../js/utils/checker'
+import { isValidPasswords } from '../../../../js/utils/checker'
 
 export default function SignupPageNames() {
   const [error, setError] = useState('')
@@ -16,7 +16,10 @@ export default function SignupPageNames() {
       setError({ ok: true, error: '' })
       return
     }
-    const isValid = isValidPassword(formData.password, formData.confirmPassword)
+    const isValid = isValidPasswords(
+      formData.password,
+      formData.confirmPassword
+    )
 
     setDisabled({ ...disabled, btn: !isValid.ok })
     setError(isValid)
