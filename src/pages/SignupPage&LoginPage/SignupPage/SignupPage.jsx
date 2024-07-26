@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { ToastContainer, toast } from 'react-toastify'
 
 import SignupPageNames from './components/SignupPageNames'
 import SignupPageUsername from './components/SignupPageUsername'
@@ -8,10 +9,14 @@ import Button from '../../../components/Button/Button'
 import { SignupPageContext } from './SignupPageContext'
 import { goToHref } from '../../../js/utils/href'
 import { getLocation } from '../../../js/utils/location'
+import { toastData } from '../../../js/utils/toast'
+import { createAccount } from '../../../modules/accounts.module'
+import { trimStrings } from '../../../js/utils/object'
 
 import logo from '../../../imgs/logo/logo.jpg'
 
 import './SignupPage.css'
+import 'react-toastify/dist/ReactToastify.css'
 
 export default function SignupPage() {
   const [currentPage, setCurrentPage] = useState(0)
@@ -22,7 +27,7 @@ export default function SignupPage() {
     password: '',
     confirmPassword: '',
   })
-  const [disabled, setDisabled] = useState(true)
+  const [disabled, setDisabled] = useState({ btn: true, form: false })
   const pages = [
     <SignupPageNames />,
     <SignupPageUsername />,
@@ -30,13 +35,15 @@ export default function SignupPage() {
   ]
 
   useEffect(() => {
-    if (currentPage === 0) setDisabled(!formData.fname)
-    if (currentPage === 1) setDisabled(!formData.username)
+    if (currentPage === 0) setDisabled({ ...disabled, btn: !formData.fname })
+    if (currentPage === 1) setDisabled({ ...disabled, btn: !formData.username })
     if (currentPage === 2)
-      setDisabled(
-        (!formData.password && !formData.confirmPassword) ||
-          formData.password !== formData.confirmPassword
-      )
+      setDisabled({
+        ...disabled,
+        btn:
+          (!formData.password && !formData.confirmPassword) ||
+          formData.password !== formData.confirmPassword,
+      })
   }, [
     formData.fname,
     formData.username,
@@ -48,7 +55,7 @@ export default function SignupPage() {
   function nextPage(e) {
     e.preventDefault()
 
-    if (disabled) return
+    if (disabled.btn) return
     if (currentPage === pages.length - 1) return create()
     setCurrentPage(currentPage + 1)
   }
@@ -59,20 +66,33 @@ export default function SignupPage() {
   }
 
   async function create() {
+    setDisabled({ ...disabled, form: true })
     const location = await getLocation()
-    delete formData.confirmPassword
 
     const userData = {
-      user: formData,
+      user: getUserData(formData),
       joinded: new Date().getTime(),
       location,
     }
 
-    console.log(userData)
+    const created = await createAccount(trimStrings(userData))
+    if (!created.ok) {
+      toast.error(created.error)
+      setDisabled({ ...disabled, form: false })
+      return
+    }
+
+    goToHref('/')
   }
 
   return (
     <>
+      <ToastContainer
+        position={toastData.position}
+        autoClose={toastData.autoClose}
+        theme={toastData.theme}
+        draggable
+      />
       <SignupPageContext.Provider value={{ formData, setFormData, nextPage }}>
         <div className="full_page d_f_ce">
           <div className="signup_login_con con_bg_df list_y">
@@ -83,7 +103,10 @@ export default function SignupPage() {
             <hr />
             <div className="list_x d_f_jc_sb">
               <img className="signup_login_logo" src={logo} alt="Logo" />
-              <div className="input_area list_y d_f_jc_sb">
+              <div
+                className="input_area list_y d_f_jc_sb"
+                disabled={disabled.form}
+              >
                 {pages[currentPage]}
                 <div className="d_f_jc_end list_x_small">
                   {currentPage > 0 && (
@@ -97,7 +120,7 @@ export default function SignupPage() {
                   )}
                   <Button
                     className="w_max signup_login_clr_btn"
-                    disabled={disabled}
+                    disabled={disabled.btn}
                     onClick={nextPage}
                   >
                     {currentPage === pages.length - 1 ? 'Create' : 'Next'}
@@ -110,4 +133,11 @@ export default function SignupPage() {
       </SignupPageContext.Provider>
     </>
   )
+}
+
+function getUserData(userData) {
+  delete userData.confirmPassword
+
+  if (!userData.lname) delete userData.lname
+  return userData
 }
