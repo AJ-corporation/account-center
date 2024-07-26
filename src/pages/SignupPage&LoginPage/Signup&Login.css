@@ -16,7 +16,7 @@
 
 .signup_login_logo {
   width: var(--signup-login-logo);
-  aspect-ratio: 1;
+  height: var(--signup-login-logo);
   border-radius: 50px;
   filter: drop-shadow(0 0 200px #021131) drop-shadow(0 0 100px #014f84);
   scale: 0.3;
