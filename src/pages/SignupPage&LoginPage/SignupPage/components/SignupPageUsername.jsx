@@ -34,7 +34,9 @@ export default function SignupPageNames() {
         }}
       />
       {!error.ok && (
-        <b className="con pd_tb_small txt_bg_red d_f_ce">{error.error}</b>
+        <b className="con pd_tb_small txt_bg_red d_f_ce signup_login_error_txt">
+          {error.error}
+        </b>
       )}
       <button className="d_n"></button>
     </form>

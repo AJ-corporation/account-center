@@ -39,6 +39,13 @@
   background-color: var(--main-bg-color);
 }
 
+.signup_login_error_txt {
+  scale: 0.5;
+  opacity: 0;
+  animation: scaleTo1 0.3s var(--spring-trns) forwards,
+    opaTo1 0.3s var(--spring-trns) forwards;
+}
+
 :root {
   --signup-login-logo: 200px;
   --signup-login-con-width: 700px;

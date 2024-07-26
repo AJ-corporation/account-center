@@ -36,20 +36,7 @@ export default function SignupPage() {
 
   useEffect(() => {
     if (currentPage === 0) setDisabled({ ...disabled, btn: !formData.fname })
-    if (currentPage === 2)
-      setDisabled({
-        ...disabled,
-        btn:
-          (!formData.password && !formData.confirmPassword) ||
-          formData.password !== formData.confirmPassword,
-      })
-  }, [
-    formData.fname,
-    formData.username,
-    formData.password,
-    formData.confirmPassword,
-    currentPage,
-  ])
+  }, [formData.fname, currentPage])
 
   function nextPage(e) {
     e.preventDefault()
