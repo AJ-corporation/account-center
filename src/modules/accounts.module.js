@@ -6,7 +6,11 @@ import {
   loadFromLocalStorage,
   saveToLocalStorage,
 } from '../js/db/local/localStorage'
-import { getNewId, isUsernameAvailable } from './utils/accounts.module.util'
+import {
+  getNewId,
+  getUserDataByUsername,
+  isUsernameAvailable,
+} from './utils/accounts.module.util'
 
 export async function createAccount(userData) {
   const isUsernameFree = await isUsernameAvailable(userData.user.username)
@@ -22,6 +26,24 @@ export async function createAccount(userData) {
   return saved
     ? { ok: true, error: false }
     : { ok: false, error: 'Cannot create an account' }
+}
+
+export async function loginAccount(userLocalData) {
+  const userData = (await getUserDataByUsername(userLocalData.username))[0]
+  if (!userData)
+    return {
+      ok: false,
+      error: 'Username is not registered',
+    }
+
+  if (userData.user.password !== userLocalData.password)
+    return {
+      ok: false,
+      error: 'Password is incorrect',
+    }
+
+  login(userData.id)
+  return { ok: true }
 }
 
 function login(id) {
