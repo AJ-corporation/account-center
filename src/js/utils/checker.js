@@ -38,3 +38,11 @@ export function isValidUsername(username) {
 
   return { ok: true }
 }
+
+export function isValidPassword(password, confirmPassword) {
+  if (password !== confirmPassword) {
+    return { ok: false, error: 'Passwords do not match' }
+  }
+
+  return { ok: true }
+}
