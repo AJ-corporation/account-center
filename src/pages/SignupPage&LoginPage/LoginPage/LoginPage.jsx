@@ -4,6 +4,8 @@ import Input from '../../../components/Input/Input'
 import Button from '../../../components/Button/Button'
 
 import { goToHref } from '../../../js/utils/href'
+import { trimStrings } from '../../../js/utils/object'
+import { isValidPassword, isValidUsername } from '../../../js/utils/checker'
 
 import logo from '../../../imgs/logo/logo.jpg'
 
@@ -14,16 +16,29 @@ export default function LoginPage() {
     username: '',
     password: '',
   })
+  const [error, setError] = useState('')
   const [disabled, setDisabled] = useState({ btn: true, form: false })
 
   useEffect(() => {
-    setDisabled({ ...disabled, btn: !formData.username || !formData.password })
+    if (!formData.username || !formData.password) {
+      setDisabled({ ...disabled, btn: true })
+      setError({ ok: true, error: '' })
+      return
+    }
+
+    const getError = getLoginError(
+      isValidUsername(formData.username.trim()),
+      isValidPassword(formData.password.trim())
+    )
+
+    setError(getError)
+    setDisabled({ ...disabled, btn: !getError.ok })
   }, [formData.username, formData.password])
 
   function login(e) {
     e.preventDefault()
     setDisabled({ ...disabled, form: true })
-    console.log(formData)
+    console.log(trimStrings(formData))
   }
 
   return (
@@ -61,6 +76,11 @@ export default function LoginPage() {
                       setFormData({ ...formData, password: e.target.value }),
                   }}
                 />
+                {!error.ok && (
+                  <b className="con pd_tb_small txt_bg_red d_f_ce signup_login_error_txt">
+                    {error.error}
+                  </b>
+                )}
                 <Button
                   className="signup_login_clr_btn"
                   disabled={disabled.btn}
@@ -74,4 +94,10 @@ export default function LoginPage() {
       </div>
     </>
   )
+}
+
+function getLoginError(isValidUsername, isValidPassword) {
+  if (!isValidUsername.ok) return isValidUsername
+  if (!isValidPassword.ok) return isValidPassword
+  return { ok: true }
 }
