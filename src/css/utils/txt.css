@@ -3,3 +3,7 @@
 .txt_red {
   color: var(--txt-red-color);
 }
+
+.txt_bg_red {
+  background-color: var(--txt-bg-red-color);
+}
