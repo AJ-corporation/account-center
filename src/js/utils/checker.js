@@ -20,6 +20,8 @@ function getLocalData() {
 }
 
 export function isValidUsername(username) {
+  if (!username) return { ok: false, error: 'Username is required' }
+
   if (!isNaN(parseInt(username[0]))) {
     return {
       ok: false,
@@ -39,10 +41,17 @@ export function isValidUsername(username) {
   return { ok: true }
 }
 
-export function isValidPassword(password, confirmPassword) {
+export function isValidPasswords(password, confirmPassword) {
+  if (!password) return { ok: false, error: 'Password is required' }
+
   if (password !== confirmPassword) {
     return { ok: false, error: 'Passwords do not match' }
   }
 
+  return { ok: true }
+}
+
+export function isValidPassword(password) {
+  if (!password) return { ok: false, error: 'Password is not valid' }
   return { ok: true }
 }
