@@ -1,11 +1,16 @@
-import { useContext } from 'react'
+import { useContext, useEffect } from 'react'
 
 import Input from '../../../../components/Input/Input'
 
 import { SignupPageContext } from '../SignupPageContext'
 
 export default function SignupPageNames() {
-  const { formData, setFormData, nextPage } = useContext(SignupPageContext)
+  const { disabled, setDisabled, formData, setFormData, nextPage } =
+    useContext(SignupPageContext)
+
+  useEffect(() => {
+    setDisabled({ ...disabled, btn: !formData.fname })
+  }, [formData.fname])
 
   return (
     <form className="input_area list_y d_f_jc_sb" onSubmit={nextPage}>

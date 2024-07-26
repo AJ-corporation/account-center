@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { ToastContainer, toast } from 'react-toastify'
 
 import SignupPageNames from './components/SignupPageNames'
@@ -33,10 +33,6 @@ export default function SignupPage() {
     <SignupPageUsername />,
     <SignupPagePassword />,
   ]
-
-  useEffect(() => {
-    if (currentPage === 0) setDisabled({ ...disabled, btn: !formData.fname })
-  }, [formData.fname, currentPage])
 
   function nextPage(e) {
     e.preventDefault()
