@@ -1,0 +1,25 @@
+@import url('../../css/utils/padding.css');
+@import url('../../css/utils/list.css');
+@import url('../../css/utils/border.css');
+@import url('../../css/utils/animation/transition.css');
+
+label {
+  font-size: 0.9em;
+}
+
+input {
+  background-color: var(--input-bg-color);
+  border-radius: var(--bd-ra);
+  padding: var(--pd-small) var(--pd);
+  transition: scale 0.3s var(--spring-trns);
+  width: 100%;
+
+  &:hover {
+    background-color: var(--input-bg-hover-color);
+  }
+
+  &:focus {
+    background-color: var(--input-bg-focus-color);
+    box-shadow: 0 0 0 1px var(--input-bg-focus-border-color) inset;
+  }
+}

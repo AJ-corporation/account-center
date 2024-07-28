@@ -2,6 +2,10 @@
   padding: var(--pd);
 }
 
+.pd_tb_small {
+  padding: var(--pd-small) 0;
+}
+
 :root {
   --pd: 12px;
   --pd-small: 6px;
