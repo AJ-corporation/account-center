@@ -12,6 +12,9 @@ const SignupPage = React.lazy(() =>
 const LoginPage = React.lazy(() =>
   import('./pages/SignupPage&LoginPage/LoginPage/LoginPage')
 )
+const SendLocalStoragePage = React.lazy(() =>
+  import('./pages/SendLocalStoragePage/SendLocalStoragePage')
+)
 
 export default function App() {
   const checkApp = useCallback(() => {
@@ -24,6 +27,7 @@ export default function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<HomePage />} />
+          <Route path="/localstorage" element={<SendLocalStoragePage />} />
           <Route path="/accounts/signup" element={<SignupPage />} />
           <Route path="/accounts/login" element={<LoginPage />} />
         </Routes>
