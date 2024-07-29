@@ -7,7 +7,7 @@ export default function SendLocalStoragePage() {
     function onMessage(e) {
       if (e.data.action === 'requestLocalStorage') {
         const localData = loadFromLocalStorage('aj-accounts')
-        e.source.postMessage(localData, e.origin)
+        e.source.postMessage(JSON.stringify(localData), e.origin)
       }
     }
 
