@@ -3,6 +3,7 @@ import { ToastContainer, toast } from 'react-toastify'
 
 import Input from '../../../components/Input/Input'
 import Button from '../../../components/Button/Button'
+import Checkbox from '../../../components/Checkbox/Checkbox'
 
 import { goToHref } from '../../../js/utils/href'
 import { toastData } from '../../../js/utils/toast'
@@ -23,6 +24,7 @@ export default function LoginPage() {
     password: '',
   })
   const [error, setError] = useState('')
+  const [showPasswords, setShowPasswords] = useState(false)
   const [disabled, setDisabled] = useState({ btn: true, form: false })
 
   useEffect(() => {
@@ -100,12 +102,18 @@ export default function LoginPage() {
                 />
                 <Input
                   title="Password"
-                  type="password"
+                  type={showPasswords ? 'text' : 'password'}
                   inputProps={{
                     onChange: (e) =>
                       setFormData({ ...formData, password: e.target.value }),
                   }}
                 />
+                <div className="d_f_jc_start">
+                  <Checkbox
+                    text="Show password"
+                    check={(checked) => setShowPasswords(!checked)}
+                  />
+                </div>
                 {!error.ok && (
                   <b className="con pd_tb_small txt_bg_red d_f_ce signup_login_error_txt">
                     {error.error}
