@@ -54,7 +54,11 @@ export default function SignupPage() {
     const location = await getLocation()
 
     const userFormData = getUserData(formData)
-    if (!userFormData.ok) return toast.error(userFormData.error)
+    if (!userFormData.ok) {
+      toast.error(userFormData.error)
+      setDisabled({ ...disabled, form: false })
+      return
+    }
 
     const userData = {
       user: userFormData.userData,
