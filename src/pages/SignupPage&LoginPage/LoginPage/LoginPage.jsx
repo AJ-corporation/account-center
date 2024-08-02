@@ -98,6 +98,7 @@ export default function LoginPage() {
                     autoFocus: true,
                     onChange: (e) =>
                       setFormData({ ...formData, username: e.target.value }),
+                    maxLength: 30,
                   }}
                 />
                 <Input
