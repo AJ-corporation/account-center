@@ -31,6 +31,7 @@ export default function SignupPageNames() {
           onChange: (e) =>
             setFormData({ ...formData, username: e.target.value }),
           value: formData.username,
+          maxLength: 30,
         }}
       />
       {!error.ok && (
