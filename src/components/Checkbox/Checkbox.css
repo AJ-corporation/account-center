@@ -30,7 +30,6 @@
   --bd-ra: 9px;
   min-width: var(--checkbox-size);
   aspect-ratio: 1;
-
   position: relative;
   background-color: var(--input-bg-color);
   border-radius: var(--bd-ra);
