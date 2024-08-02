@@ -51,8 +51,11 @@ export default function SignupPage() {
     setDisabled({ ...disabled, form: true })
     const location = await getLocation()
 
+    const userFormData = getUserData(formData)
+    if (!userFormData.ok) return toast.error(userFormData.error)
+
     const userData = {
-      user: getUserData(formData),
+      user: userFormData.userData,
       joinded: new Date().getTime(),
       location,
     }
@@ -120,8 +123,13 @@ export default function SignupPage() {
 }
 
 function getUserData(userData) {
+  if (userData.fname.length > 20 || userData?.lname?.length > 20)
+    return { ok: false, error: 'Name is too long' }
+  if (userData.username.length > 30)
+    return { ok: false, error: 'Username is too long' }
+
   delete userData.confirmPassword
 
   if (!userData.lname) delete userData.lname
-  return userData
+  return { ok: true, userData }
 }
