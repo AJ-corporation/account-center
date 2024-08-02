@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useRef, useState } from 'react'
 import { ToastContainer, toast } from 'react-toastify'
 
 import SignupPageNames from './components/SignupPageNames'
@@ -6,12 +6,13 @@ import SignupPageUsername from './components/SignupPageUsername'
 import SignupPagePassword from './components/SignupPagePassword'
 import Button from '../../../components/Button/Button'
 
-import { SignupPageContext } from './SignupPageContext'
 import { goToHref } from '../../../js/utils/href'
-import { getLocation } from '../../../js/utils/location'
 import { toastData } from '../../../js/utils/toast'
-import { createAccount } from '../../../modules/accounts.module'
 import { trimStrings } from '../../../js/utils/object'
+import { getLocation } from '../../../js/utils/location'
+import { isDevicePhone } from '../../../js/utils/device'
+import { createAccount } from '../../../modules/accounts.module'
+import { SignupPageContext } from './SignupPageContext'
 
 import logo from '../../../imgs/logo/logo.jpg'
 
@@ -19,6 +20,7 @@ import './SignupPage.css'
 import 'react-toastify/dist/ReactToastify.css'
 
 export default function SignupPage() {
+  const isPhone = useRef(isDevicePhone()).current
   const [currentPage, setCurrentPage] = useState(0)
   const [formData, setFormData] = useState({
     fname: '',
@@ -82,14 +84,24 @@ export default function SignupPage() {
         value={{ formData, setFormData, disabled, setDisabled, nextPage }}
       >
         <div className="full_page d_f_ce">
-          <div className="signup_login_con con_bg_df list_y">
+          <div
+            className="signup_login_con con_bg_df list_y"
+            phone={isPhone ? 'true' : ''}
+          >
             <div className="d_f_jc_sb d_f_ai_ce">
-              <h1 className="title">Create account</h1>
+              <div className="list_x d_f_ce">
+                {isPhone && (
+                  <img className="signup_login_logo" src={logo} alt="Logo" />
+                )}
+                <h1 className="title">Create account</h1>
+              </div>
               <Button onClick={() => goToHref('/accounts/login')}>Login</Button>
             </div>
             <hr />
             <div className="list_x d_f_jc_sb">
-              <img className="signup_login_logo" src={logo} alt="Logo" />
+              {!isPhone && (
+                <img className="signup_login_logo" src={logo} alt="Logo" />
+              )}
               <div
                 className="input_area list_y d_f_jc_sb"
                 disabled={disabled.form}

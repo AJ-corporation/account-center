@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { ToastContainer, toast } from 'react-toastify'
 
 import Input from '../../../components/Input/Input'
@@ -7,6 +7,7 @@ import Button from '../../../components/Button/Button'
 import { goToHref } from '../../../js/utils/href'
 import { toastData } from '../../../js/utils/toast'
 import { trimStrings } from '../../../js/utils/object'
+import { isDevicePhone } from '../../../js/utils/device'
 import { loginAccount } from '../../../modules/accounts.module'
 import { isValidPassword, isValidUsername } from '../../../js/utils/checker'
 
@@ -16,6 +17,7 @@ import './LoginPage.css'
 import 'react-toastify/dist/ReactToastify.css'
 
 export default function LoginPage() {
+  const isPhone = useRef(isDevicePhone()).current
   const [formData, setFormData] = useState({
     username: '',
     password: '',
@@ -62,16 +64,26 @@ export default function LoginPage() {
         draggable
       />
       <div className="full_page d_f_ce">
-        <div className="signup_login_con con_bg_df list_y">
+        <div
+          className="signup_login_con con_bg_df list_y"
+          phone={isPhone ? 'true' : ''}
+        >
           <div className="d_f_jc_sb d_f_ai_ce">
-            <h1 className="title">Login account</h1>
+            <div className="list_x d_f_ce">
+              {isPhone && (
+                <img className="signup_login_logo" src={logo} alt="Logo" />
+              )}
+              <h1 className="title">Login account</h1>
+            </div>
             <Button onClick={() => goToHref('/accounts/signup')}>
               Sign up
             </Button>
           </div>
           <hr />
           <div className="list_x d_f_jc_sb">
-            <img className="signup_login_logo" src={logo} alt="Logo" />
+            {!isPhone && (
+              <img className="signup_login_logo" src={logo} alt="Logo" />
+            )}
             <div className="input_area list_y d_f_jc_sb">
               <form
                 className="input_area list_y d_f_jc_sb"
