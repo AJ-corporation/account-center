@@ -26,6 +26,7 @@ export default function SignupPageNames() {
           autoFocus: true,
           onChange: (e) => setFormData({ ...formData, fname: e.target.value }),
           value: formData.fname,
+          maxLength: 20,
         }}
       />
       <Input
@@ -33,6 +34,7 @@ export default function SignupPageNames() {
         inputProps={{
           onChange: (e) => setFormData({ ...formData, lname: e.target.value }),
           value: formData.lname,
+          maxLength: 20,
         }}
       />
       <button className="d_n"></button>
