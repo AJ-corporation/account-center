@@ -43,9 +43,23 @@ export default function LoginPage() {
     setDisabled({ ...disabled, btn: !getError.ok })
   }, [formData.username, formData.password])
 
+  function isFormOk(formData) {
+    if (formData.username.length > 30)
+      return { ok: false, error: 'Username is too long' }
+
+    return { ok: true }
+  }
+
   async function login(e) {
     e.preventDefault()
     setDisabled({ ...disabled, form: true })
+
+    const formDataCheck = isFormOk(formData)
+    if (!formDataCheck.ok) {
+      toast.error(formDataCheck.error)
+      setDisabled({ ...disabled, form: false })
+      return
+    }
 
     const loggedIn = await loginAccount(trimStrings(formData))
     if (!loggedIn.ok) {
