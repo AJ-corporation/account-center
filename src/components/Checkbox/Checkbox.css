@@ -1,0 +1,73 @@
+@import url('../../css/utils/padding.css');
+@import url('../../css/utils/list.css');
+@import url('../../css/utils/border.css');
+@import url('../../css/utils/display.css');
+@import url('../../css/utils/animation/transition.css');
+
+.checkbox_input_area {
+  &:hover .checkbox_input {
+    background-color: var(--input-bg-hover-color);
+  }
+
+  &:active .checkbox_input {
+    background-color: var(--input-bg-focus-color);
+    box-shadow: 0 0 0 1px var(--input-bg-focus-border-color) inset;
+  }
+}
+
+.checkbox_input_area[isChecked='true'] {
+  & .checkbox_input {
+    background-color: var(--input-checkbox-checked-bg-color) !important;
+  }
+
+  & .checkbox_input::after,
+  & .checkbox_input::before {
+    opacity: 1;
+  }
+}
+
+.checkbox_input {
+  --bd-ra: 9px;
+  min-width: var(--checkbox-size);
+  aspect-ratio: 1;
+
+  position: relative;
+  background-color: var(--input-bg-color);
+  border-radius: var(--bd-ra);
+  padding: var(--pd-small) var(--pd);
+  transition: background-color 0.3s var(--spring-trns);
+}
+
+.checkbox_input::after,
+.checkbox_input::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: var(--bd-ra);
+  opacity: 0;
+  height: 2px;
+  background-color: var(--input-checkbox-line-bg-color);
+  transition: opacity 0.3s var(--spring-trns);
+}
+
+.checkbox_input::before {
+  width: var(--checkbox-line1-width);
+  transform: translate(-90%, 100%) rotate(45deg);
+}
+
+.checkbox_input::after {
+  width: var(--checkbox-line2-width);
+  transform: translate(-35%, -40%) rotate(-60deg);
+}
+
+.checkbox_text {
+  font-size: 0.9em;
+}
+
+:root {
+  --checkbox-size: 25px;
+  --checkbox-line1-width: 8px;
+  --checkbox-line2-width: 15px;
+}
