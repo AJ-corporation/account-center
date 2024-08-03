@@ -12,7 +12,7 @@
   &:active .checkbox_input,
   &:focus-within .checkbox_input {
     background-color: var(--input-bg-focus-color);
-    box-shadow: 0 0 0 1px var(--input-bg-focus-border-color) inset;
+    box-shadow: 0 0 0 1px var(--input-bd-focus-color) inset;
   }
 }
 
