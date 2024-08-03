@@ -23,6 +23,19 @@
   animation: scaleTo1 1s var(--spring-trns) forwards;
 }
 
+.signup_login_con form {
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transition: max-height 0.5s var(--spring-trns),
+    opacity 0.5s var(--spring-trns);
+}
+
+.signup_login_con form.expanded {
+  max-height: 100%;
+  opacity: 1;
+}
+
 .signup_login_con .input_area {
   width: min(100%, var(--signup-login-input-width));
 }
