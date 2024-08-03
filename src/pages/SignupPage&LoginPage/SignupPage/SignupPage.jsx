@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react'
+import { useRef, useState } from 'react'
 import { ToastContainer, toast } from 'react-toastify'
 
 import SignupPageNames from './components/SignupPageNames'
@@ -20,7 +20,6 @@ import './SignupPage.css'
 import 'react-toastify/dist/ReactToastify.css'
 
 export default function SignupPage() {
-  const formRef = useRef()
   const isPhone = useRef(isDevicePhone()).current
   const [currentPage, setCurrentPage] = useState(0)
   const [formData, setFormData] = useState({
@@ -36,10 +35,6 @@ export default function SignupPage() {
     <SignupPageUsername />,
     <SignupPagePassword />,
   ]
-
-  useEffect(() => {
-    formRef.current.querySelector('form').classList.add('expanded')
-  }, [currentPage])
 
   function nextPage(e) {
     e.preventDefault()
@@ -112,7 +107,6 @@ export default function SignupPage() {
                 <img className="signup_login_logo" src={logo} alt="Logo" />
               )}
               <div
-                ref={formRef}
                 className="input_area list_y d_f_jc_sb"
                 disabled={disabled.form}
               >
