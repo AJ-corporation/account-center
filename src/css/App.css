@@ -1,5 +1,6 @@
 @import url('./utils/color.css');
 @import url('./utils/fz.css');
+@import url('./utils/device.css');
 
 *,
 *::before,
