@@ -134,10 +134,7 @@ export default function LoginPage() {
                     {error.error}
                   </b>
                 )}
-                <Button
-                  className="signup_login_clr_btn"
-                  disabled={disabled.btn}
-                >
+                <Button className="clr_btn" disabled={disabled.btn}>
                   Login
                 </Button>
               </form>

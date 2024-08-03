@@ -122,7 +122,7 @@ export default function SignupPage() {
                     </Button>
                   )}
                   <Button
-                    className="w_max signup_login_clr_btn"
+                    className="w_max clr_btn"
                     disabled={disabled.btn}
                     onClick={nextPage}
                   >
