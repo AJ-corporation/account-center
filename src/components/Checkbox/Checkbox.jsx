@@ -15,7 +15,7 @@ export default function Checkbox({ text, check }) {
       <div
         className="checkbox_input_area list_x_small d_f_ce"
         onClick={handleCheck}
-        isChecked={checked ? 'true' : ''}
+        ischecked={checked ? 'true' : ''}
       >
         <button className="checkbox_input" tabIndex={0} type="button"></button>
         <span className="checkbox_text">{text}</span>

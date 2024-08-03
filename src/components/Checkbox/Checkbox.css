@@ -20,7 +20,7 @@
   }
 }
 
-.checkbox_input_area[isChecked='true'] {
+.checkbox_input_area[ischecked='true'] {
   & .checkbox_input {
     background-color: var(--input-checkbox-checked-bg-color) !important;
   }
