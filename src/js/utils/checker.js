@@ -2,21 +2,15 @@ import {
   loadFromLocalStorage,
   saveToLocalStorage,
 } from '../db/local/localStorage'
+import { isDevicePhone } from './device'
+import { getLocalData } from './checker.util'
 
 export function appChecker() {
   const localData = loadFromLocalStorage('aj-accounts')
   if (!localData) saveToLocalStorage('aj-accounts', getLocalData())
-}
 
-function getLocalData() {
-  const data = {
-    accounts: {
-      active: false,
-      accounts: [],
-    },
-  }
-
-  return data
+  const isPhone = isDevicePhone()
+  if (isPhone) document.body.classList.add('is_phone')
 }
 
 export function isValidUsername(username) {

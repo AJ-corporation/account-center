@@ -23,6 +23,9 @@
   /* Button */
   :root {
     --btn-bg-color: #444;
+    /* focus-visible */
+    --btn-focus-boxsh1-color: #7c84d7;
+    --btn-focus-boxsh2-color: #fff;
   }
 
   /* Input */
@@ -30,7 +33,7 @@
     --input-bg-color: #444;
     --input-bg-hover-color: #666;
     --input-bg-focus-color: #333;
-    --input-bg-focus-border-color: #7c84d7;
+    --input-bd-focus-color: #7c84d7;
     /* checkbox */
     --input-checkbox-checked-bg-color: #252b75;
     --input-checkbox-line-bg-color: #fff;
