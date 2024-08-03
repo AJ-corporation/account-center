@@ -1,10 +1,12 @@
 import { useContext, useEffect, useState } from 'react'
 
 import Input from '../../../../components/Input/Input'
+import Button from '../../../../components/Button/Button'
 import Checkbox from '../../../../components/Checkbox/Checkbox'
 
 import { SignupPageContext } from '../SignupPageContext'
 import { isValidPasswords } from '../../../../js/utils/checker'
+import { getStrongPassword } from '../../../../js/utils/password'
 
 export default function SignupPageNames() {
   const [error, setError] = useState('')
@@ -27,6 +29,11 @@ export default function SignupPageNames() {
     setError(isValid)
   }, [formData.password, formData.confirmPassword])
 
+  function setStrongPassword() {
+    const password = getStrongPassword(12)
+    setFormData({ ...formData, password, confirmPassword: password })
+  }
+
   return (
     <form className="input_area list_y d_f_jc_sb" onSubmit={nextPage}>
       <Input
@@ -48,11 +55,14 @@ export default function SignupPageNames() {
           value: formData.confirmPassword,
         }}
       />
-      <div className="d_f_jc_start">
+      <div className="d_f_jc_sb">
         <Checkbox
           text="Show passwords"
           check={(checked) => setShowPasswords(!checked)}
         />
+        <Button className="clr_btn" onClick={setStrongPassword} type="button">
+          strong passwort
+        </Button>
       </div>
       {!error.ok && (
         <b className="con pd_tb_small txt_bg_red d_f_ce signup_login_error_txt">

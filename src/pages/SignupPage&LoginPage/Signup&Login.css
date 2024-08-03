@@ -39,10 +39,6 @@
   font-size: 1.5em;
 }
 
-.signup_login_clr_btn {
-  background-color: var(--main-bg-color);
-}
-
 .signup_login_error_txt {
   scale: 0.5;
   opacity: 0;

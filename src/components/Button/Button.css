@@ -18,3 +18,7 @@ button {
       0 0 0 3px var(--btn-focus-boxsh1-color) inset;
   }
 }
+
+button.clr_btn {
+  background-color: var(--main-bg-color);
+}
