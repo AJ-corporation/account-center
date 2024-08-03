@@ -17,13 +17,7 @@ export default function Checkbox({ text, check }) {
         onClick={handleCheck}
         isChecked={checked ? 'true' : ''}
       >
-        <div
-          className="checkbox_input"
-          tabIndex={0}
-          onKeyUp={(e) => {
-            if (e.key === 'Enter') handleCheck()
-          }}
-        ></div>
+        <button className="checkbox_input" tabIndex={0} type="button"></button>
         <span className="checkbox_text">{text}</span>
       </div>
     </>
