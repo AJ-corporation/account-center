@@ -23,6 +23,9 @@
   /* Button */
   :root {
     --btn-bg-color: #444;
+    /* focus-visible */
+    --btn-focus-boxsh1-color: #7c84d7;
+    --btn-focus-boxsh2-color: #fff;
   }
 
   /* Input */
