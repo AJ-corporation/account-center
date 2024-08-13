@@ -1,0 +1,39 @@
+@import url('../../css/utils/list.css');
+@import url('../../css/utils/size.css');
+@import url('../../css/utils/display.css');
+
+.avatar {
+  width: var(--avatar-scale-size);
+  height: var(--avatar-scale-size);
+  font-size: var(--avatar-font-size);
+  border-radius: 50%;
+  box-shadow: 0 0 0 1px var(--main-bd-color) inset;
+  position: relative;
+}
+
+.avatar img {
+  width: 100%;
+  height: 100%;
+  border-radius: inherit;
+  object-fit: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+  scale: 0;
+  animation: scaleTo1 0.3s var(--spring-trns) forwards;
+}
+
+.avatar_edit_con {
+  --bd-ra: 15px;
+  border-radius: var(--bd-ra);
+}
+
+.avatar_delete_btn {
+  opacity: 0;
+  animation: opaTo1 1s var(--spring-trns) forwards;
+}
+
+:root {
+  --avatar-scale-size: 100px;
+  --avatar-font-size: initial;
+}

@@ -15,10 +15,15 @@ button {
 
   &:focus-visible {
     box-shadow: 0 0 0 1px var(--btn-focus-boxsh2-color) inset,
-      0 0 0 3px var(--btn-focus-boxsh1-color) inset;
+      0 0 0 3px var(--btn-focus-boxsh1-color) inset !important;
   }
 }
 
 button.clr_btn {
   background-color: var(--main-bg-color);
+}
+
+button.red_bd_btn {
+  background-color: transparent;
+  box-shadow: 0 0 0 1px var(--red-bd-color) inset;
 }

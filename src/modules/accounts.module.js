@@ -2,6 +2,7 @@ import {
   incrementField,
   saveToFirestore,
 } from '../js/db/firebase/firebaseFirestore'
+import { uploadBlob } from '../js/db/firebase/firebaseStorage'
 import {
   loadFromLocalStorage,
   saveToLocalStorage,
@@ -12,7 +13,7 @@ import {
   isUsernameAvailable,
 } from './utils/accounts.module.util'
 
-export async function createAccount(userData) {
+export async function createAccount(userData, img) {
   const isUsernameFree = await isUsernameAvailable(userData.user.username)
   if (!isUsernameFree) return { ok: false, error: 'Username already taken' }
 
@@ -22,6 +23,11 @@ export async function createAccount(userData) {
   await incrementField('accounts', '_about', 'amount', 1)
   const saved = await saveToFirestore('accounts', `${id}`, userData)
   login(id)
+
+  if (img) {
+    const avatarSaved = await uploadBlob(`users/${id}/avatar`, img)
+    if (!avatarSaved) return { ok: false, error: 'Cannot upload avatar' }
+  }
 
   return saved
     ? { ok: true, error: false }

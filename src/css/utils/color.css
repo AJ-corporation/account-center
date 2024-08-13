@@ -6,6 +6,7 @@
 
     /* main */
     --main-bg-color: #111975;
+    --main-bd-color: #313ba3;
 
     /* bg */
     --bg-dark-color: #333;
@@ -37,5 +38,11 @@
     /* checkbox */
     --input-checkbox-checked-bg-color: #252b75;
     --input-checkbox-line-bg-color: #fff;
+  }
+
+  /* Colors */
+  :root {
+    /* red */
+    --red-bd-color: #a84242;
   }
 }
