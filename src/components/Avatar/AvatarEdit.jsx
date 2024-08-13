@@ -3,6 +3,8 @@ import { useRef, useState } from 'react'
 import Avatar from './Avatar'
 import Button from '../Button/Button'
 
+import { imageCompressor } from '../../js/utils/image'
+
 import './Avatar.css'
 
 export default function AvatarEdit({ formData, setFormData }) {
@@ -12,7 +14,7 @@ export default function AvatarEdit({ formData, setFormData }) {
   async function upload(e) {
     const file = e.target.files[0]
     const newImgs = {
-      file: file,
+      file: await imageCompressor(file),
       img: URL.createObjectURL(file),
     }
 
