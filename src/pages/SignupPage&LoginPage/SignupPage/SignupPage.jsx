@@ -3,6 +3,7 @@ import { ToastContainer, toast } from 'react-toastify'
 
 import SignupPageNames from './components/SignupPageNames'
 import SignupPageUsername from './components/SignupPageUsername'
+import SignupPageProfilePic from './components/SignupPageProfilePic'
 import SignupPagePassword from './components/SignupPagePassword'
 import Button from '../../../components/Button/Button'
 
@@ -27,11 +28,13 @@ export default function SignupPage() {
     lname: '',
     username: '',
     password: '',
+    img: '',
     confirmPassword: '',
   })
   const [disabled, setDisabled] = useState({ btn: true, form: false })
   const pages = [
     <SignupPageNames />,
+    <SignupPageProfilePic />,
     <SignupPageUsername />,
     <SignupPagePassword />,
   ]
@@ -53,6 +56,8 @@ export default function SignupPage() {
     setDisabled({ ...disabled, form: true })
     const location = await getLocation()
 
+    const img = formData.img
+
     const userFormData = getUserData(formData)
     if (!userFormData.ok) {
       toast.error(userFormData.error)
@@ -60,16 +65,20 @@ export default function SignupPage() {
       return
     }
 
-    const userData = {
+    let userData = {
       user: userFormData.userData,
       joinded: new Date().getTime(),
       location,
     }
 
-    const created = await createAccount(trimStrings(userData))
+    userData = { user: trimStrings(userData), img }
+
+    const created = await createAccount(userData.user, userData.img)
     if (!created.ok) {
       toast.error(created.error)
       setDisabled({ ...disabled, form: false })
+
+      setFormData({ ...formData, confirmPassword: formData.password })
       return
     }
 
@@ -121,6 +130,14 @@ export default function SignupPage() {
                       Previous
                     </Button>
                   )}
+                  {currentPage === 1 && (
+                    <Button
+                      className="w_max bg_none"
+                      onClick={() => setCurrentPage(currentPage + 1)}
+                    >
+                      Skip
+                    </Button>
+                  )}
                   <Button
                     className="w_max clr_btn"
                     disabled={disabled.btn}
@@ -145,6 +162,7 @@ function getUserData(userData) {
     return { ok: false, error: 'Username is too long' }
 
   delete userData.confirmPassword
+  delete userData.img
 
   if (!userData.lname) delete userData.lname
   return { ok: true, userData }
