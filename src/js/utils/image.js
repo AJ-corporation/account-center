@@ -44,7 +44,6 @@ export async function imageCompressor(
           type: mimeString,
         })
 
-        console.log(file)
         res(file)
       }
       img.src = event.target.result
