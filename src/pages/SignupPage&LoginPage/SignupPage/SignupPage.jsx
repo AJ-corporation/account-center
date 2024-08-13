@@ -136,7 +136,7 @@ export default function SignupPage() {
                       Previous
                     </Button>
                   )}
-                  {currentPage === 1 && (
+                  {currentPage === 1 && !formData.img && (
                     <Button className="w_max bg_none" onClick={nextPage}>
                       Skip
                     </Button>
