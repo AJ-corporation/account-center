@@ -1,8 +1,10 @@
 import { useEffect, useRef, useState } from 'react'
+import { ToastContainer, toast } from 'react-toastify'
 
 import Avatar from './Avatar'
 import Button from '../Button/Button'
 
+import { toastData } from '../../js/utils/toast'
 import { imageCompressor, pasteImage } from '../../js/utils/image'
 
 import './Avatar.css'
@@ -14,6 +16,7 @@ export default function AvatarEdit({ formData, setFormData }) {
   useEffect(() => {
     async function pasteProfilePic(e) {
       const file = await pasteImage(e)
+      if (!file) return toast.error('Please paste image')
       setFile(file)
     }
 
@@ -38,6 +41,12 @@ export default function AvatarEdit({ formData, setFormData }) {
 
   return (
     <>
+      <ToastContainer
+        position={toastData.position}
+        autoClose={toastData.autoClose}
+        theme={toastData.theme}
+        draggable
+      />
       <div className="avatar_edit_con list_y d_f_ai_ce">
         <Avatar
           img={imgs.img || formData?.img?.img}
