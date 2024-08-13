@@ -5,14 +5,17 @@ import AvatarEdit from '../../../../components/Avatar/AvatarEdit'
 import { SignupPageContext } from '../SignupPageContext'
 
 export default function SignupPageProfilePic() {
-  const { setDisabled, skipPage, formData, setFormData } =
+  const { setDisabled, nextPage, formData, setFormData } =
     useContext(SignupPageContext)
 
   useEffect(() => {
+    setDisabled((prev) => ({ ...prev, btn: false }))
+  }, [])
+
+  useEffect(() => {
     function allowEnter(e) {
-      if (formData.img && e.key === 'Enter') skipPage()
+      if (formData.img && e.key === 'Enter') nextPage(e)
     }
-    setDisabled((prev) => ({ ...prev, btn: !formData.img }))
 
     window.addEventListener('keyup', allowEnter)
     return () => {

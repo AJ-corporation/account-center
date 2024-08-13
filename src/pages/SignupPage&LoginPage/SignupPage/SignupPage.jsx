@@ -47,10 +47,6 @@ export default function SignupPage() {
     setCurrentPage(currentPage + 1)
   }
 
-  function skipPage() {
-    setCurrentPage(currentPage + 1)
-  }
-
   function previousPage() {
     if (currentPage === 0) return
     setCurrentPage(currentPage - 1)
@@ -104,7 +100,6 @@ export default function SignupPage() {
           disabled,
           setDisabled,
           nextPage,
-          skipPage,
         }}
       >
         <div className="full_page d_f_ce">
@@ -142,7 +137,7 @@ export default function SignupPage() {
                     </Button>
                   )}
                   {currentPage === 1 && (
-                    <Button className="w_max bg_none" onClick={skipPage}>
+                    <Button className="w_max bg_none" onClick={nextPage}>
                       Skip
                     </Button>
                   )}
