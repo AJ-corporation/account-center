@@ -1,9 +1,9 @@
-import { useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 
 import Avatar from './Avatar'
 import Button from '../Button/Button'
 
-import { imageCompressor } from '../../js/utils/image'
+import { imageCompressor, pasteImage } from '../../js/utils/image'
 
 import './Avatar.css'
 
@@ -11,8 +11,22 @@ export default function AvatarEdit({ formData, setFormData }) {
   const inputRef = useRef()
   const [imgs, setImgs] = useState({ file: '', img: '' })
 
+  useEffect(() => {
+    async function pasteProfilePic(e) {
+      const file = await pasteImage(e)
+      setFile(file)
+    }
+
+    window.addEventListener('paste', pasteProfilePic)
+    return () => window.removeEventListener('paste', pasteProfilePic)
+  }, [])
+
   async function upload(e) {
-    const file = e.target.files[0]
+    setFile(e.target.files[0])
+    e.target.value = ''
+  }
+
+  async function setFile(file) {
     const newImgs = {
       file: await imageCompressor(file),
       img: URL.createObjectURL(file),
@@ -20,8 +34,6 @@ export default function AvatarEdit({ formData, setFormData }) {
 
     setImgs(newImgs)
     setFormData((prev) => ({ ...prev, img: newImgs }))
-
-    e.target.value = ''
   }
 
   return (

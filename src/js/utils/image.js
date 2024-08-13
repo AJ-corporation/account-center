@@ -56,3 +56,17 @@ export async function imageCompressor(
     reader.readAsDataURL(image)
   })
 }
+
+export function pasteImage(e) {
+  return new Promise((res) => {
+    const { items } = e.clipboardData
+
+    for (let i = 0; i < items.length; i++) {
+      if (items[i].type.indexOf('image') !== -1) {
+        const file = items[i].getAsFile()
+        res(file)
+      }
+    }
+    res(false)
+  })
+}
