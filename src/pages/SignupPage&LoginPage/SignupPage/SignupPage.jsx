@@ -47,6 +47,10 @@ export default function SignupPage() {
     setCurrentPage(currentPage + 1)
   }
 
+  function skipPage() {
+    setCurrentPage(currentPage + 1)
+  }
+
   function previousPage() {
     if (currentPage === 0) return
     setCurrentPage(currentPage - 1)
@@ -56,7 +60,7 @@ export default function SignupPage() {
     setDisabled({ ...disabled, form: true })
     const location = await getLocation()
 
-    const img = formData.img
+    const imgs = formData.img
 
     const userFormData = getUserData(formData)
     if (!userFormData.ok) {
@@ -71,7 +75,7 @@ export default function SignupPage() {
       location,
     }
 
-    userData = { user: trimStrings(userData), img }
+    userData = { user: trimStrings(userData), img: imgs.file }
 
     const created = await createAccount(userData.user, userData.img)
     if (!created.ok) {
@@ -94,7 +98,14 @@ export default function SignupPage() {
         draggable
       />
       <SignupPageContext.Provider
-        value={{ formData, setFormData, disabled, setDisabled, nextPage }}
+        value={{
+          formData,
+          setFormData,
+          disabled,
+          setDisabled,
+          nextPage,
+          skipPage,
+        }}
       >
         <div className="full_page d_f_ce">
           <div
@@ -131,10 +142,7 @@ export default function SignupPage() {
                     </Button>
                   )}
                   {currentPage === 1 && (
-                    <Button
-                      className="w_max bg_none"
-                      onClick={() => setCurrentPage(currentPage + 1)}
-                    >
+                    <Button className="w_max bg_none" onClick={skipPage}>
                       Skip
                     </Button>
                   )}

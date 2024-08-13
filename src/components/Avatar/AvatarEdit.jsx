@@ -5,17 +5,19 @@ import Button from '../Button/Button'
 
 import './Avatar.css'
 
-export default function AvatarEdit({ setFormData }) {
+export default function AvatarEdit({ formData, setFormData }) {
   const inputRef = useRef()
   const [imgs, setImgs] = useState({ file: '', img: '' })
 
   async function upload(e) {
     const file = e.target.files[0]
-    setImgs({
+    const newImgs = {
       file: file,
       img: URL.createObjectURL(file),
-    })
-    setFormData((prev) => ({ ...prev, img: file }))
+    }
+
+    setImgs(newImgs)
+    setFormData((prev) => ({ ...prev, img: newImgs }))
 
     e.target.value = ''
   }
@@ -24,7 +26,7 @@ export default function AvatarEdit({ setFormData }) {
     <>
       <div className="avatar_edit_con list_y d_f_ai_ce">
         <Avatar
-          img={imgs.img}
+          img={imgs.img || formData?.img?.img}
           editing={true}
           style={{ size: 100, fontSize: 50 }}
           onClick={() => inputRef.current.click()}
@@ -39,7 +41,7 @@ export default function AvatarEdit({ setFormData }) {
         <Button className="w_100" onClick={() => inputRef.current.click()}>
           Upload
         </Button>
-        {imgs.img && (
+        {(imgs.img || formData?.img?.img) && (
           <Button
             className="w_100 red_bd_btn avatar_delete_btn"
             onClick={() => {
