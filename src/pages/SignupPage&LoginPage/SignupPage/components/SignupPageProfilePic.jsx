@@ -18,9 +18,7 @@ export default function SignupPageProfilePic() {
     }
 
     window.addEventListener('keyup', allowEnter)
-    return () => {
-      window.removeEventListener('keyup', allowEnter)
-    }
+    return () => window.removeEventListener('keyup', allowEnter)
   }, [formData.img])
 
   return (
