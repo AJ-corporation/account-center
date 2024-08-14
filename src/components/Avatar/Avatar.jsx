@@ -5,12 +5,13 @@ export default function Avatar({
   letter,
   style = { size: 100, fontSize: 20 },
   editing,
+  className,
   ...props
 }) {
   return (
     <>
       <div
-        className="avatar d_f_ce"
+        className={`avatar d_f_ce ${className}`}
         style={{
           '--avatar-scale-size': `${style.size}px`,
           '--avatar-font-size': style.fontSize
