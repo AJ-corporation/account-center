@@ -1,13 +1,17 @@
 .pd {
-  padding: var(--pd);
+  padding: var(--pd) !important;
 }
 
 .pd_tb_small {
-  padding: var(--pd-small) 0;
+  padding: var(--pd-small) 0 !important;
 }
 
 .pd_small_very {
-  padding: var(--pd-small-very);
+  padding: var(--pd-small-very) !important;
+}
+
+.pd_small {
+  padding: var(--pd-small) !important;
 }
 
 :root {
