@@ -10,6 +10,7 @@ import {
 import {
   getNewId,
   getUserDataByUsername,
+  isUserLoggedIn,
   isUsernameAvailable,
 } from './utils/accounts.module.util'
 
@@ -47,6 +48,9 @@ export async function loginAccount(userLocalData) {
       ok: false,
       error: 'Password is incorrect',
     }
+
+  if (isUserLoggedIn(userData.id))
+    return { ok: false, error: 'User is already logged in' }
 
   login(userData.id)
   return { ok: true }
