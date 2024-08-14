@@ -6,8 +6,13 @@
 @import url('../../css/utils/line.css');
 @import url('../../css/utils/bg.css');
 @import url('../../css/utils/toast.css');
+@import url('../../css/utils/padding.css');
+@import url('../../css/utils/border.css');
+@import url('../../css/utils/opacity.css');
+@import url('../../css/utils/cursor.css');
 @import url('../../css/utils/animation/animation.css');
 @import url('../../css/utils/animation/transition.css');
+@import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200');
 
 .signup_login_con {
   width: min(95%, var(--signup-login-con-width));
@@ -58,6 +63,23 @@
   --signup-login-logo-bd-ra: 15px;
   --signup-login-logo-drop-shadow: drop-shadow(0 0 20px #021131)
     drop-shadow(0 0 80px #014f84) drop-shadow(0 0 100px #1881c3);
+}
+
+.signup_login_final_info_con {
+  width: 100%;
+  padding: var(--pd-small);
+  border-radius: var(--bd-ra);
+  background-color: var(--bg-dark-color);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.signup_login_final_info_input {
+  padding: 0 !important;
+  text-align: center;
+  background-color: transparent;
+  pointer-events: none;
 }
 
 :root {

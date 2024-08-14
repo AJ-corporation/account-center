@@ -91,7 +91,10 @@ export default function LoginPage() {
               )}
               <h1 className="title">Login account</h1>
             </div>
-            <Button onClick={() => goToHref('/accounts/signup')}>
+            <Button
+              onClick={() => goToHref('/accounts/signup')}
+              disabled={disabled.form}
+            >
               Sign up
             </Button>
           </div>

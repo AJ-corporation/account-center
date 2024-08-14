@@ -6,6 +6,10 @@
   padding: var(--pd-small) 0;
 }
 
+.pd_small_very {
+  padding: var(--pd-small-very);
+}
+
 :root {
   --pd: 12px;
   --pd-small: 6px;

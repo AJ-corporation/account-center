@@ -2,6 +2,7 @@ import {
   loadFromFirestore,
   loadFromFirestoreWhere,
 } from '../../js/db/firebase/firebaseFirestore'
+import { loadFromLocalStorage } from '../../js/db/local/localStorage'
 
 export async function isUsernameAvailable(username) {
   const usersData = await getUserDataByUsername(username)
@@ -22,4 +23,9 @@ export async function getUserDataByUsername(username) {
   ])
 
   return usersData
+}
+
+export function isUserLoggedIn(id) {
+  const { accounts } = loadFromLocalStorage('aj-accounts').accounts
+  return accounts.includes(id)
 }

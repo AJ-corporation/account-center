@@ -1,6 +1,12 @@
 import './Avatar.css'
 
-export default function Avatar({ img, style, editing, ...props }) {
+export default function Avatar({
+  img,
+  letter,
+  style = { size: 100, fontSize: 20 },
+  editing,
+  ...props
+}) {
   return (
     <>
       <div
@@ -14,6 +20,7 @@ export default function Avatar({ img, style, editing, ...props }) {
         {...props}
       >
         {editing && '+'}
+        {letter && letter}
         {img && <img src={img} alt="Avatar" />}
       </div>
     </>
