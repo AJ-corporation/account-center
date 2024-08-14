@@ -61,7 +61,11 @@ export default function AvatarEdit({ formData, setFormData }) {
           className="d_n"
           onChange={upload}
         />
-        <Button className="w_100" onClick={() => inputRef.current.click()}>
+        <Button
+          type="button"
+          className="w_100"
+          onClick={() => inputRef.current.click()}
+        >
           Upload
         </Button>
         {(imgs.img || formData?.img?.img) && (

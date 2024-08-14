@@ -13,7 +13,9 @@ export default function SignupPageProfilePic() {
 
   return (
     <>
-      <AvatarEdit formData={formData} setFormData={setFormData} />
+      <form>
+        <AvatarEdit formData={formData} setFormData={setFormData} />
+      </form>
     </>
   )
 }
