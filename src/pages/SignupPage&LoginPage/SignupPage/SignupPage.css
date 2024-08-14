@@ -1,1 +1,11 @@
 @import url('../Signup&Login.css');
+
+.signup_final_info_img_con {
+  position: relative;
+}
+
+.signup_final_info_img_btn {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}

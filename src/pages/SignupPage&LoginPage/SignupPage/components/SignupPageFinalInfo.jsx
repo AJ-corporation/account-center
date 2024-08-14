@@ -60,8 +60,21 @@ export default function SignupPageFinalInfo() {
       />
       <div className="list_y">
         <div className="list_y_small d_f_ai_ce">
-          {formData.img && <Avatar img={formData.img.img} />}
-          {!formData.img && <Avatar letter={formData.fname[0]} />}
+          <div className="signup_final_info_img_con">
+            {formData.img && <Avatar img={formData.img.img} />}
+            {!formData.img && <Avatar letter={formData.fname[0]} />}
+            <Button
+              className="pd_small_very d_f_ce signup_final_info_img_btn"
+              onClick={() => setCurrentPage(1)}
+            >
+              {formData.img.img && (
+                <span className="material-symbols-outlined">edit</span>
+              )}
+              {!formData.img.img && (
+                <span className="material-symbols-outlined">add</span>
+              )}
+            </Button>
+          </div>
           <SignupPageFinalInfoContext.Provider value={{ setCurrentPage }}>
             <ShowUserData
               i={0}
