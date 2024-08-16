@@ -2,11 +2,19 @@
 @import url('./border.css');
 
 .con {
-  border-radius: var(--bd-ra);
+  border-radius: var(--bd-ra-big);
+}
+
+.con_bg_df,
+.con_bg_dr {
+  padding: var(--pd);
+  border-radius: var(--bd-ra-big);
 }
 
 .con_bg_df {
   background-color: var(--bg-default-color);
-  padding: var(--pd);
-  border-radius: var(--bd-ra);
+}
+
+.con_bg_dr {
+  background-color: var(--bg-dark-color);
 }
