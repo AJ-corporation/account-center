@@ -1,0 +1,12 @@
+@import url('../../css/utils/toast.css');
+
+.profile_info_con {
+  width: min(300px, 95%);
+  margin: 0 auto;
+  position: relative;
+}
+
+.profile_info_subtitle {
+  font-size: 0.9em;
+  opacity: 0.9;
+}
