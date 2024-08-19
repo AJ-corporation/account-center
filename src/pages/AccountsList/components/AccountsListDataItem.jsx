@@ -47,34 +47,41 @@ export function AccountsListDataItem({ className, id, logout = false }) {
           disabled={!accountData}
           onClick={() => switchAccountToId(id)}
         >
-          <AccountDataItem id={id} accountData={accountData} />
+          <AccountDataItem id={id} accountData={accountData} logout={true} />
         </Button>
       )}
     </>
   )
 }
 
-function AccountDataItem({ id, accountData }) {
+function AccountDataItem({ id, accountData, logout = false }) {
   return (
     <>
-      <div className="list_x_small">
-        <Avatar
-          style={{ size: 35 }}
-          id={id}
-          letter={accountData?.user?.fname[0]}
-        />
-        <div className="list_y_small_very d_f_ai_start">
-          <div>
-            {`${accountData?.user?.fname || 'Loading'} ${
-              accountData?.user?.lname || ''
-            }`}
-          </div>
-          <div className="account_data_username">
-            {accountData?.user?.username
-              ? `@${accountData?.user.username}`
-              : ''}
+      <div className="d_f_jc_sb d_f_ai_ce w_100">
+        <div className="list_x_small">
+          <Avatar
+            style={{ size: 35 }}
+            id={id}
+            letter={accountData?.user?.fname[0]}
+          />
+          <div className="list_y_small_very d_f_ai_start">
+            <div>
+              {`${accountData?.user?.fname || 'Loading'} ${
+                accountData?.user?.lname || ''
+              }`}
+            </div>
+            <div className="account_data_username">
+              {accountData?.user?.username
+                ? `@${accountData?.user.username}`
+                : ''}
+            </div>
           </div>
         </div>
+        {logout && (
+          <span className="material-symbols-outlined fz_small_icon">
+            change_circle
+          </span>
+        )}
       </div>
     </>
   )
