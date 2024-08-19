@@ -23,6 +23,10 @@ button.clr_btn {
   background-color: var(--main-bg-color);
 }
 
+button.dark_btn {
+  background-color: var(--btn-bg-dark-color);
+}
+
 button.red_bd_btn {
   background-color: transparent;
   box-shadow: 0 0 0 1px var(--red-bd-color) inset;
