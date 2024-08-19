@@ -1,25 +1,37 @@
+import { useContext } from 'react'
+
 import Avatar from '../../../components/Avatar/Avatar'
 import Button from '../../../components/Button/Button'
 
 import { useGetAccount } from '../../../hooks/useAccounts'
+import { AccountsListContext } from '../AccountsListContext'
 
-import './AccountData.css'
+import './AccountsListDataItem.css'
 
-export function AccountData({ className, id, logout = false }) {
+export function AccountsListDataItem({ className, id, logout = false }) {
   const [accountData] = useGetAccount(id)
+  const { setStatus } = useContext(AccountsListContext)
 
   return (
     <>
       {logout && (
         <div className={`con_bg_dr d_f_jc_sb ${className}`}>
           <AccountDataItem id={id} accountData={accountData} />
-          <Button className="d_f_ce txt_red pd_small">
+          <Button
+            disabled={!accountData}
+            onClick={() => setStatus('logout')}
+            className="d_f_ce txt_red pd_small"
+          >
             <span className="material-symbols-outlined">logout</span>
           </Button>
         </div>
       )}
       {!logout && (
-        <Button className="list_x">
+        <Button
+          className="list_x"
+          disabled={!accountData}
+          onClick={() => setStatus('switch')}
+        >
           <AccountDataItem id={id} accountData={accountData} />
         </Button>
       )}
