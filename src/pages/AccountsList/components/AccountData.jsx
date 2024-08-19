@@ -5,12 +5,12 @@ import { useGetAccount } from '../../../hooks/useAccounts'
 
 import './AccountData.css'
 
-export function AccountData({ className, id }) {
+export function AccountData({ className, id, logout = false }) {
   const [accountData] = useGetAccount(id)
 
   return (
     <>
-      <div className={`con_bg_df account_data_medium ${className}`}>
+      <div className={`con_bg_df account_data ${className}`}>
         <div className="list_x d_f_jc_sb">
           <div className="list_x">
             <Avatar
@@ -32,9 +32,11 @@ export function AccountData({ className, id }) {
               <div></div>
             </div>
           </div>
-          <Button className="d_f_ce txt_red pd_small">
-            <span className="material-symbols-outlined">logout</span>
-          </Button>
+          {logout && (
+            <Button className="d_f_ce txt_red pd_small">
+              <span className="material-symbols-outlined">logout</span>
+            </Button>
+          )}
         </div>
       </div>
     </>

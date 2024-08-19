@@ -3,7 +3,7 @@
 @import url('../../../css/utils/padding.css');
 @import url('../../../css/utils/display.css');
 
-.account_data_medium {
+.account_data {
   width: min(300px, 95%);
 }
 
