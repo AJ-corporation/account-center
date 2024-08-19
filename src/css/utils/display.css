@@ -19,6 +19,11 @@
   justify-content: flex-start;
 }
 
+.d_f_ai_start {
+  display: flex;
+  align-items: start;
+}
+
 .d_f_ai_ce {
   display: flex;
   align-items: center;
