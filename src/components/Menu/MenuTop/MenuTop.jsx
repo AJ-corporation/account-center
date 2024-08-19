@@ -1,9 +1,17 @@
+import { useRef } from 'react'
+
 import Avatar from '../../Avatar/Avatar'
 import Button from '../../Button/Button'
+
+import { loadFromLocalStorage } from '../../../js/db/local/localStorage'
 
 import './MenuTop.css'
 
 export default function MenuTop() {
+  const curId = useRef(
+    loadFromLocalStorage('aj-accounts').accounts.active
+  ).current
+
   return (
     <>
       <div className="pd_small d_f_ce">
@@ -11,11 +19,14 @@ export default function MenuTop() {
           <Button className="d_f_ce pd_small">
             <span className="material-symbols-outlined">search</span>
           </Button>
-          <Avatar
-            className="menu_top_avatar cur_poi"
-            style={{ size: 36 }}
-            letter="a"
-          />
+          <a href={`/profile/${curId}`}>
+            <Avatar
+              id="10"
+              className="menu_top_avatar cur_poi"
+              style={{ size: 36 }}
+              letter="a"
+            />
+          </a>
         </div>
       </div>
     </>
