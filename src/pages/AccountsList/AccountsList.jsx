@@ -38,7 +38,7 @@ export default function AccountsList() {
                 Main page
               </Button>
             </div>
-            <hr className="w_100" />
+            {localData?.accounts.length > 1 && <hr className="w_100" />}
             {localData?.accounts &&
               localData?.accounts.map(
                 (id) =>
