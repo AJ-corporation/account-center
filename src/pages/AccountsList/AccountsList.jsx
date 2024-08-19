@@ -25,6 +25,7 @@ export default function AccountsList() {
                 id={localData?.active}
                 logout={true}
               />
+              {localData?.accounts.length === 1 && <hr className="w_100" />}
               <Button
                 className="w_100"
                 onClick={() => goToHref('/accounts/login')}
