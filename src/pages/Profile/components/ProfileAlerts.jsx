@@ -14,31 +14,6 @@ export function ProfileMenuAlert({ setShowAlert }) {
           >
             <span>Account center</span>
           </Button>
-          <Button
-            className="dark_btn"
-            onClick={() => {
-              setShowAlert((prev) => ({ ...prev, menu: false, logout: true }))
-            }}
-          >
-            <span className="txt_red">Log out</span>
-          </Button>
-        </div>
-      </Alert>
-    </>
-  )
-}
-
-export function ProfileLogoutAlert({ setShowAlert }) {
-  return (
-    <>
-      <Alert
-        onHide={() => setShowAlert((prev) => ({ ...prev, logout: false }))}
-      >
-        <div className="list_y_small">
-          <p>Are you sure you want to log out?</p>
-          <Button className="dark_btn">
-            <span className="txt_red">Log out</span>
-          </Button>
         </div>
       </Alert>
     </>

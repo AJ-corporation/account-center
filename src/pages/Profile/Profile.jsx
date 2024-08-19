@@ -1,10 +1,7 @@
 import { useRef, useState } from 'react'
 
 import ProfileInto from './components/ProfileInfo'
-import {
-  ProfileLogoutAlert,
-  ProfileMenuAlert,
-} from './components/ProfileAlerts'
+import { ProfileMenuAlert } from './components/ProfileAlerts'
 import Button from '../../components/Button/Button'
 import Avatar from '../../components/Avatar/Avatar'
 import MenuTop from '../../components/Menu/MenuTop/MenuTop'
@@ -21,7 +18,7 @@ export default function Profile() {
   const accountId = useRef(window.location.pathname.split('/')[2]).current
   const isOwnAccount = useRef(curId === +accountId).current
   const [accountData] = useGetAccount(accountId)
-  const [alerts, setAlerts] = useState({ menu: false, logout: false })
+  const [alerts, setAlerts] = useState({ menu: false })
 
   return (
     <>
@@ -38,7 +35,6 @@ export default function Profile() {
             </Button>
           </div>
           {alerts.menu && <ProfileMenuAlert setShowAlert={setAlerts} />}
-          {alerts.logout && <ProfileLogoutAlert setShowAlert={setAlerts} />}
           <div className="con_bg_df list_y_small w_100">
             <div className="d_f_jc_sb">
               <div></div>
