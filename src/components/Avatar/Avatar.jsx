@@ -1,6 +1,9 @@
+import { useGetAccountProfilePic } from '../../hooks/useAccounts'
+
 import './Avatar.css'
 
 export default function Avatar({
+  id,
   img,
   letter,
   style = { size: 100, fontSize: 20 },
@@ -8,6 +11,8 @@ export default function Avatar({
   className,
   ...props
 }) {
+  const [accountImg] = useGetAccountProfilePic(id)
+
   return (
     <>
       <div
@@ -22,7 +27,7 @@ export default function Avatar({
       >
         {editing && '+'}
         {letter && letter}
-        {img && <img src={img} alt="Avatar" />}
+        {(img || accountImg) && <img src={img || accountImg} alt="Avatar" />}
       </div>
     </>
   )
