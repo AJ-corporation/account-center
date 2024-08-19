@@ -13,6 +13,9 @@ const LoginPage = React.lazy(() =>
   import('./pages/SignupPage&LoginPage/LoginPage/LoginPage')
 )
 const Profile = React.lazy(() => import('./pages/Profile/Profile'))
+const AccountsList = React.lazy(() =>
+  import('./pages/AccountsList/AccountsList')
+)
 
 export default function App() {
   const checkApp = useCallback(() => {
@@ -27,6 +30,7 @@ export default function App() {
           <Route path="/" element={<HomePage />} />
           <Route path="/accounts/signup" element={<SignupPage />} />
           <Route path="/accounts/login" element={<LoginPage />} />
+          <Route path="/accounts/switch" element={<AccountsList />} />
           <Route path="/profile/*" element={<Profile />} />
         </Routes>
       </BrowserRouter>
