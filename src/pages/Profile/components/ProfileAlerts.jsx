@@ -10,15 +10,9 @@ export function ProfileMenuAlert({ setShowAlert }) {
         <div className="list_y_small">
           <Button
             className="dark_btn"
-            onClick={() => goToHref('/accounts/login')}
-          >
-            <span>Add account</span>
-          </Button>
-          <Button
-            className="dark_btn"
             onClick={() => goToHref('/accounts/switch')}
           >
-            <span>Switch account</span>
+            <span>Account center</span>
           </Button>
           <Button
             className="dark_btn"
