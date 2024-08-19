@@ -4,7 +4,7 @@ import Avatar from '../../../components/Avatar/Avatar'
 import Button from '../../../components/Button/Button'
 
 import { useGetAccount } from '../../../hooks/useAccounts'
-import { logoutAccount } from '../../../modules/accounts.module'
+import { logoutAccount, switchAccount } from '../../../modules/accounts.module'
 import { AccountsListContext } from '../AccountsListContext'
 
 import './AccountsListDataItem.css'
@@ -18,6 +18,13 @@ export function AccountsListDataItem({ className, id, logout = false }) {
 
     const loggedout = await logoutAccount(id)
     if (loggedout.ok) window.location.reload()
+  }
+
+  async function switchAccountToId(id) {
+    setStatus('switch')
+
+    const switched = await switchAccount(id)
+    if (switched.ok) window.location.reload()
   }
 
   return (
@@ -35,7 +42,11 @@ export function AccountsListDataItem({ className, id, logout = false }) {
         </div>
       )}
       {!logout && (
-        <Button className="list_x" disabled={!accountData}>
+        <Button
+          className="list_x"
+          disabled={!accountData}
+          onClick={() => switchAccountToId(id)}
+        >
           <AccountDataItem id={id} accountData={accountData} />
         </Button>
       )}

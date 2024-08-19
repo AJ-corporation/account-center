@@ -10,6 +10,7 @@ import {
 import {
   getNewId,
   getNewLogoutLocalData,
+  getNewSwitchLocalData,
   getUserDataByUsername,
   isUserLoggedIn,
   isUsernameAvailable,
@@ -59,6 +60,14 @@ export async function loginAccount(userLocalData) {
 
 export async function logoutAccount(id) {
   const newLocalData = await getNewLogoutLocalData(id)
+  if (newLocalData.ok) {
+    saveToLocalStorage('aj-accounts', newLocalData.data)
+    return newLocalData
+  }
+}
+
+export async function switchAccount(id) {
+  const newLocalData = await getNewSwitchLocalData(id)
   if (newLocalData.ok) {
     saveToLocalStorage('aj-accounts', newLocalData.data)
     return newLocalData

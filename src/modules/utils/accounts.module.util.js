@@ -40,3 +40,10 @@ export async function getNewLogoutLocalData(id) {
 
   return { ok: true, data: { accounts: localData } }
 }
+
+export async function getNewSwitchLocalData(id) {
+  const localData = loadFromLocalStorage('aj-accounts').accounts
+  localData.active = id
+
+  return { ok: true, data: { accounts: localData } }
+}
