@@ -1,5 +1,6 @@
-import { useContext } from 'react'
+import { useContext, useState } from 'react'
 
+import Alert from '../../../components/Alert/Alert'
 import Avatar from '../../../components/Avatar/Avatar'
 import Button from '../../../components/Button/Button'
 
@@ -12,6 +13,7 @@ import './AccountsListDataItem.css'
 export function AccountsListDataItem({ className, id, logout = false }) {
   const [accountData] = useGetAccount(id)
   const { setStatus } = useContext(AccountsListContext)
+  const [alerts, setAlerts] = useState({ logout: false })
 
   async function logoutFromAccount(id) {
     setStatus('logout')
@@ -34,7 +36,7 @@ export function AccountsListDataItem({ className, id, logout = false }) {
           <AccountDataItem id={id} accountData={accountData} />
           <Button
             disabled={!accountData}
-            onClick={() => logoutFromAccount(id)}
+            onClick={() => setAlerts({ ...alerts, logout: true })}
             className="d_f_ce txt_red pd_small"
           >
             <span className="material-symbols-outlined">logout</span>
@@ -49,6 +51,13 @@ export function AccountsListDataItem({ className, id, logout = false }) {
         >
           <AccountDataItem id={id} accountData={accountData} logout={true} />
         </Button>
+      )}
+      {alerts.logout && (
+        <LogoutAlert
+          id={id}
+          setAlerts={setAlerts}
+          logoutFromAccount={logoutFromAccount}
+        />
       )}
     </>
   )
@@ -83,6 +92,21 @@ function AccountDataItem({ id, accountData, logout = false }) {
           </span>
         )}
       </div>
+    </>
+  )
+}
+
+function LogoutAlert({ id, setAlerts, logoutFromAccount }) {
+  return (
+    <>
+      <Alert onHide={() => setAlerts((prev) => ({ ...prev, logout: false }))}>
+        <div className="list_y_small">
+          <p>Are you sure you want to log out?</p>
+          <Button className="dark_btn" onClick={() => logoutFromAccount(id)}>
+            <span className="txt_red">Log out</span>
+          </Button>
+        </div>
+      </Alert>
     </>
   )
 }
