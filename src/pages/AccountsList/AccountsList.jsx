@@ -1,6 +1,6 @@
 import { useRef } from 'react'
 
-import { AccountDataMedium } from './components/AccountData'
+import { AccountData } from './components/AccountData'
 
 import { loadFromLocalStorage } from '../../js/db/local/localStorage'
 
@@ -12,15 +12,11 @@ export default function AccountsList() {
   return (
     <>
       <div className="full_page d_f_ce list_y_small">
-        <AccountDataMedium
-          className="accounts_list_active"
-          id={localData?.active}
-        />
+        <AccountData className="accounts_list_active" id={localData?.active} />
         <hr className="w_100" />
         {localData?.accounts &&
           localData?.accounts.map(
-            (id) =>
-              id !== localData?.active && <AccountDataMedium key={id} id={id} />
+            (id) => id !== localData?.active && <AccountData key={id} id={id} />
           )}
       </div>
     </>

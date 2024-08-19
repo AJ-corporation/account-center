@@ -5,7 +5,7 @@ import { useGetAccount } from '../../../hooks/useAccounts'
 
 import './AccountData.css'
 
-export function AccountDataMedium({ className, id }) {
+export function AccountData({ className, id }) {
   const [accountData] = useGetAccount(id)
 
   return (
