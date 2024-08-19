@@ -1,8 +1,13 @@
 @import url('./padding.css');
 @import url('./border.css');
 
-.con {
+.con,
+.con_pd {
   border-radius: var(--bd-ra-big);
+}
+
+.con_pd {
+  padding: var(--pd);
 }
 
 .con_bg_df,

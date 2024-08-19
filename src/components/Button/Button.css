@@ -31,3 +31,8 @@ button.red_bd_btn {
   background-color: transparent;
   box-shadow: 0 0 0 1px var(--red-bd-color) inset;
 }
+
+button.clr_bd_btn {
+  background-color: transparent;
+  box-shadow: 0 0 0 1px var(--main-bd-color) inset;
+}
