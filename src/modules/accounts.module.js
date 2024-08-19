@@ -9,6 +9,7 @@ import {
 } from '../js/db/local/localStorage'
 import {
   getNewId,
+  getNewLogoutLocalData,
   getUserDataByUsername,
   isUserLoggedIn,
   isUsernameAvailable,
@@ -54,6 +55,14 @@ export async function loginAccount(userLocalData) {
 
   login(userData.id)
   return { ok: true }
+}
+
+export async function logoutAccount(id) {
+  const newLocalData = await getNewLogoutLocalData(id)
+  if (newLocalData.ok) {
+    saveToLocalStorage('aj-accounts', newLocalData.data)
+    return newLocalData
+  }
 }
 
 function login(id) {

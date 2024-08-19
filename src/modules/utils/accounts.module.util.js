@@ -29,3 +29,14 @@ export function isUserLoggedIn(id) {
   const { accounts } = loadFromLocalStorage('aj-accounts').accounts
   return accounts.includes(id)
 }
+
+export async function getNewLogoutLocalData(id) {
+  const localData = loadFromLocalStorage('aj-accounts').accounts
+
+  const newIds = localData.accounts.filter((curId) => curId !== id)
+  localData.accounts = newIds
+
+  if (localData.active === id) localData.active = newIds[0] || false
+
+  return { ok: true, data: { accounts: localData } }
+}
