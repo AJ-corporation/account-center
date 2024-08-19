@@ -1,3 +1,7 @@
+.bd_50 {
+  border-radius: 50%;
+}
+
 .bd_circle {
   border-radius: 10em;
 }
