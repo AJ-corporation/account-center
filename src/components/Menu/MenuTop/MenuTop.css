@@ -1,10 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200');
 @import url('../../../css/utils/display.css');
 @import url('../../../css/utils/padding.css');
 @import url('../../../css/utils/cons.css');
 @import url('../../../css/utils/list.css');
 @import url('../../../css/utils/cursor.css');
 @import url('../../../css/utils//animation/transition.css');
-@import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200');
 
 .menu_top_avatar {
   transition: scale 0.3s var(--spring-trns);
