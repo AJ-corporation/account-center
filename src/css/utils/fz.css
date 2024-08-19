@@ -1,3 +1,7 @@
+.fz_small_icon {
+  font-size: 1.5em !important;
+}
+
 :root {
   --font-size: 14px;
 }
