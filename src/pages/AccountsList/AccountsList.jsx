@@ -26,6 +26,12 @@ export default function AccountsList() {
                 logout={true}
               />
               <Button
+                className="w_100"
+                onClick={() => goToHref('/accounts/login')}
+              >
+                Add account
+              </Button>
+              <Button
                 className="clr_bd_btn w_100"
                 onClick={() => goToHref('/')}
               >
