@@ -3,10 +3,6 @@
 @import url('../../../css/utils/padding.css');
 @import url('../../../css/utils/display.css');
 
-.account_data {
-  width: min(300px, 95%);
-}
-
 .account_data_username {
   font-size: 0.9em;
   opacity: 0.9;
