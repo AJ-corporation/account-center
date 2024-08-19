@@ -1,0 +1,9 @@
+@import url('../../css/utils/line.css');
+@import url('../../css/utils/size.css');
+@import url('../../css/utils/cons.css');
+@import url('../../css/utils/list.css');
+@import url('../../css/utils/display.css');
+
+.accounts_list_active {
+  border: 2px solid var(--main-bd-color);
+}
