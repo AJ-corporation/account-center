@@ -11,3 +11,7 @@
 .account_list_con {
   width: min(300px, 95%);
 }
+
+.accounts_list_no_account_icon {
+  font-size: 8em;
+}
