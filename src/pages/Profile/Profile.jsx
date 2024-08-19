@@ -1,83 +1,61 @@
-import { useRef } from 'react'
-import { ToastContainer, toast } from 'react-toastify'
+import { useRef, useState } from 'react'
 
+import ProfileInto from './components/ProfileInfo'
+import {
+  ProfileLogoutAlert,
+  ProfileMenuAlert,
+} from './components/ProfileAlerts'
 import Button from '../../components/Button/Button'
 import Avatar from '../../components/Avatar/Avatar'
 import MenuTop from '../../components/Menu/MenuTop/MenuTop'
 
-import { toastData } from '../../js/utils/toast'
-import { useGetAccount, useGetAccountProfilePic } from '../../hooks/useAccounts'
+import { useGetAccount } from '../../hooks/useAccounts'
 import { loadFromLocalStorage } from '../../js/db/local/localStorage'
 
 import './Profile.css'
-import 'react-toastify/dist/ReactToastify.css'
 
 export default function Profile() {
   const curId = useRef(
     loadFromLocalStorage('aj-accounts').accounts.active
   ).current
   const accountId = useRef(window.location.pathname.split('/')[2]).current
+  const isOwnAccount = useRef(curId === +accountId).current
   const [accountData] = useGetAccount(accountId)
-  const [accountProfilePic] = useGetAccountProfilePic(accountId)
+  const [alerts, setAlerts] = useState({ menu: false, logout: false })
 
   return (
     <>
-      <ToastContainer
-        position={toastData.position}
-        autoClose={toastData.autoClose}
-        theme={toastData.theme}
-        draggable
-      />
       <div className="list_y_small">
         <MenuTop />
         <div className="list_y d_f_ce profile_info_con">
-          <Avatar img={accountProfilePic} letter={accountData?.user.fname[0]} />
+          <Avatar id={accountId} letter={accountData?.user.fname[0]} />
+          <div className="profile_menu_icon">
+            <Button
+              className="d_f_ce bd_50 pd_small"
+              onClick={() => setAlerts({ ...alerts, menu: true })}
+            >
+              <span className="material-symbols-outlined">menu</span>
+            </Button>
+          </div>
+          {alerts.menu && <ProfileMenuAlert setShowAlert={setAlerts} />}
+          {alerts.logout && <ProfileLogoutAlert setShowAlert={setAlerts} />}
           <div className="con_bg_df list_y_small w_100">
-            <ProfileInfoItem
-              data={`${accountData?.user.fname || 'Loading'} ${
-                accountData?.user?.lname || ''
-              }`}
-              icon="account_circle"
-              subtitle="Name"
-            />
-            <ProfileInfoItem
-              data={
-                accountData?.user?.username
-                  ? `@${accountData?.user?.username}`
-                  : 'Loading'
-              }
-              icon="alternate_email"
-              subtitle="Username"
-            />
-            <ProfileInfoItem data={accountId} icon="id_card" subtitle="Id" />
+            <div className="d_f_jc_sb">
+              <div></div>
+              <b className="d_f_ce">Profile info</b>
+              {!isOwnAccount && <div></div>}
+              {isOwnAccount && (
+                <Button className="d_f_ce pd_small_very">
+                  <span className="material-symbols-outlined fz_small_icon">
+                    edit
+                  </span>
+                </Button>
+              )}
+            </div>
+            <hr />
+            <ProfileInto accountData={accountData} accountId={accountId} />
           </div>
         </div>
-      </div>
-    </>
-  )
-}
-
-function ProfileInfoItem({ data, icon, subtitle }) {
-  function copy() {
-    navigator.clipboard.writeText(data)
-    toast.success('Copied to clipboard')
-  }
-
-  return (
-    <>
-      <div className="con_bg_dr list_x d_f_ai_ce d_f_jc_sb">
-        <div className="list_x d_f_ai_ce">
-          <span className="material-symbols-outlined">{icon}</span>
-          <div className="list_y_small_very">
-            <b>{data.trim()}</b>
-            <div className="profile_info_subtitle">{subtitle}</div>
-          </div>
-        </div>
-        {subtitle === 'Id' && (
-          <Button className="d_f_ce" onClick={copy}>
-            <span className="material-symbols-outlined">content_copy</span>
-          </Button>
-        )}
       </div>
     </>
   )
