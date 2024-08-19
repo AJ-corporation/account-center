@@ -1,6 +1,8 @@
 @import url('../../css/utils/list.css');
 @import url('../../css/utils/size.css');
 @import url('../../css/utils/display.css');
+@import url('../../css/utils/animation/transition.css');
+@import url('../../css/utils/animation/animation.css');
 
 .avatar {
   width: var(--avatar-scale-size);
