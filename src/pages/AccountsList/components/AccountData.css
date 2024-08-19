@@ -1,0 +1,13 @@
+@import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200');
+@import url('../../../css/utils/txt.css');
+@import url('../../../css/utils/padding.css');
+@import url('../../../css/utils/display.css');
+
+.account_data_medium {
+  width: min(300px, 95%);
+}
+
+.account_data_username {
+  font-size: 0.9em;
+  opacity: 0.9;
+}
