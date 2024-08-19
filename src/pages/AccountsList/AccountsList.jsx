@@ -2,6 +2,7 @@ import { useRef, useState } from 'react'
 
 import Button from '../../components/Button/Button'
 import AccountsListAlert from './components/AccountsListAlert'
+import AccountsListNoAccount from './components/AccountsListNoAccount'
 import { AccountsListDataItem } from './components/AccountsListDataItem'
 
 import { goToHref } from '../../js/utils/href'
@@ -13,6 +14,8 @@ import './AccountsList.css'
 export default function AccountsList() {
   const localData = useRef(loadFromLocalStorage('aj-accounts').accounts).current
   const [status, setStatus] = useState('')
+
+  if (localData?.accounts.length === 0) return <AccountsListNoAccount />
 
   return (
     <>
