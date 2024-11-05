@@ -1,0 +1,33 @@
+label {
+  font-size: 0.9em;
+}
+
+input {
+  width: 100%;
+  background-color: var(--global-bg-color);
+}
+
+input {
+  background-color: var(--global-bg-color);
+  border-radius: 10px;
+  padding: 5px 10px;
+  border: 1px solid var(--btn-border-color);
+  line-height: 1;
+  transition: scale 0.3s var(--spring-transition);
+  height: max-content;
+  outline: none;
+}
+
+input:hover {
+  background-color: var(--btn-bg-hover-color);
+}
+
+input:focus {
+  background-color: var(--btn-bg-active-color);
+}
+
+:root {
+  --btn-border-color: #c6c6c6;
+  --btn-bg-hover-color: #333;
+  --btn-bg-active-color: #222;
+}

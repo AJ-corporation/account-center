@@ -1,0 +1,40 @@
+@import url('../../style/transitions.css');
+
+.loading_circle_area {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.loading_circle {
+  width: var(--loading-circle-size);
+  height: var(--loading-circle-size);
+  border-radius: 50%;
+  animation: loadingCircleSpin 0.8s var(--spring-transition) infinite;
+}
+
+.loading_circle_spinner {
+  width: 100%;
+  height: 100%;
+  border-top: var(--loading-circle-border-width) solid #3498db;
+  border-right: var(--loading-circle-border-width) solid #3498db;
+  border-radius: inherit;
+  animation: loadingCircleSpin 1s var(--spring-transition) infinite;
+}
+
+@keyframes loadingCircleSpin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+:root {
+  --loading-circle-size: 80px;
+  --loading-circle-border-width: 2px;
+}

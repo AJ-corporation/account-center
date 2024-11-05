@@ -1,0 +1,35 @@
+button {
+  background-color: var(--global-bg-color);
+  border-radius: 10px;
+  padding: 5px 10px;
+  border: 1px solid var(--btn-border-color);
+  line-height: 1;
+  transition: scale 0.3s var(--spring-transition);
+  height: max-content;
+  cursor: pointer;
+}
+
+button.btn_w_100 {
+  width: 100%;
+}
+
+button.btn_df_center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+button:hover {
+  background-color: var(--btn-bg-hover-color);
+}
+
+button:active {
+  background-color: var(--btn-bg-active-color);
+  scale: 0.95;
+}
+
+:root {
+  --btn-border-color: #c6c6c6;
+  --btn-bg-hover-color: #333;
+  --btn-bg-active-color: #222;
+}

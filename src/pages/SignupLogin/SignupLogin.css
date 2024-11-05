@@ -1,0 +1,26 @@
+@import url('../../style/list.css');
+@import url('../../style/icon.css');
+
+.signup_login_con {
+  padding: 10px 15px;
+  border: 1px solid var(--signup-login-border-color);
+  border-radius: 20px;
+  width: min(95%, var(--signup-login-min-width));
+  background-color: var(--global-bg-color);
+}
+
+.signup_login_title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.signup_login_submit_btn {
+  border-color: var(--signup-login-btn-border-color);
+}
+
+:root {
+  --signup-login-border-color: #cdcdcd;
+  --signup-login-btn-border-color: #1e299f;
+  --signup-login-min-width: 350px;
+}

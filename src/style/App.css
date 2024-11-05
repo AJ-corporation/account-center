@@ -1,0 +1,39 @@
+@import url('./colors.css');
+@import url('./transitions.css');
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+    Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-size: 16px;
+  user-select: none;
+  color: inherit;
+
+  &[disabled] {
+    opacity: 0.5;
+    pointer-events: none;
+  }
+}
+
+::selection {
+  background-color: #00027d;
+}
+
+html,
+body,
+#root {
+  margin: 0;
+  height: 100%;
+  background-color: var(--global-bg-color);
+  color: var(--global-text-color);
+  fill: var(--global-text-color);
+}
+
+.full_page_center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}

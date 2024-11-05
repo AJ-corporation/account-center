@@ -1,0 +1,33 @@
+@import url('../../style/list.css');
+
+.dashboard_area {
+  display: flex;
+  justify-content: center;
+  padding: 5px;
+}
+
+.dashboard_con {
+  padding: 10px 15px;
+  border: 1px solid var(--dashboard-con-border-color);
+  border-radius: 20px;
+  width: min(95%, var(--dashboard-con-min-width));
+  background-color: var(--global-bg-color);
+}
+
+.dashboard_user_name {
+  font-size: 1.6em;
+}
+
+.dashboard_user_username {
+  opacity: 0.8;
+}
+
+.dashboard_logout_btn {
+  border-color: var(--dashboard-con-btn-border-color);
+}
+
+:root {
+  --dashboard-con-border-color: #cdcdcd;
+  --dashboard-con-btn-border-color: #9f1e1e;
+  --dashboard-con-min-width: 350px;
+}
